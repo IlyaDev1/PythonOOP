@@ -1,5 +1,8 @@
-from lib import Point
+from lib import Chess
 
 
-a = Point(10, 20)
-b = Point(100, 200)
+a = Chess(1, 2)
+del a.x
+print(a.__dict__)
+
+

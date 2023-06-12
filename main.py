@@ -1,8 +1,12 @@
-from lib import Chess
+from lib import User
 
 
-a = Chess(1, 2)
-del a.x
-print(a.__dict__)
+users = [User()]
+for i in range(10):
+    users.append(User(users[i]))
 
+for i in range(len(users)):
+    print(users[i].__dict__)
 
+users[5].Name = 'Noname'
+print(users[5].Name)

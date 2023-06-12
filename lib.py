@@ -1,44 +1,25 @@
-from math import sqrt
+class User:
+    __name = ''
+    __id = 0
+    __balance = 0
 
+    def __init__(self, object=None):
+        if object is None:
+            self.__id = 0
+        else:
+            self.__id = object.__id + 1
+        self.__name = f'User{self.__id}'
 
-class Chess:
-    __Min = 0
-    __Max = 7
-    x = 0
-    __y = 0
+    @property
+    def Name(self):
+        return self.__name
 
-    @classmethod
-    def testCoor(cls, value):
-        return cls.__Min <= value <= cls.__Max
+    @Name.setter
+    def Name(self, name):
+        self.__name = name
 
-    def __init__(self, x, y):
-        self.__x = x
-        self.__y = y
+    def getBalance(self):
+        return self.__balance
 
-    def getCoor(self):
-        return (self.__x, self.__y)
-
-    def setCoor(self, x, y):
-        self.__x = x
-        self.__y = y
-
-    def __getattribute__(self, item):
-        if item == "setCoor":
-            print('you are using setCoor')
-        return object.__getattribute__(self, item)
-
-    def __setattr__(self, key, value):
-        if key == '_Chess__x' or key == '_Chess__y':
-            if not self.testCoor(value):
-                raise Exception('no')
-        object.__setattr__(self, key, value)
-
-    def __getattr__(self, item):
-        print('getattr was called')
-
-    def __delattr__(self, item):
-        print('delattr was called')
-
-    @staticmethod
-    def gip(x, y):
-        return sqrt(x ** 2 + y ** 2)
+    def setBalance(self, balance):
+        self.__balance = balance

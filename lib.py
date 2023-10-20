@@ -19,11 +19,20 @@ class Point:
         else:
             raise(Exception('x, y range'))
 
-    def getCoor(self):
-        return self.__x, self.__y
+    @property
+    def CoorX(self):
+        return self.__x
 
-    def setCoor(self, x, y):
+    @CoorX.setter
+    def CoorX(self, x):
         self.__x = x
+
+    @property
+    def CoorY(self):
+        return self.__y
+
+    @CoorY.setter
+    def CoorY(self, y):
         self.__y = y
 
     @staticmethod

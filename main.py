@@ -1,7 +1,6 @@
 from lib import Point
 
 
-a = Point()
-b = Point(1, 2)
-
-
+a = Point(1, 2, 3)
+a.x += 5
+print(a.x)

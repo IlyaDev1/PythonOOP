@@ -1,6 +1,16 @@
-from lib import Point
+from lib import Counter
 
 
-a = Point(1, 2, 3)
-a.x += 5
-print(a.x)
+a = Counter()  # a и b - функторы
+b = Counter()
+a()
+a()
+print(a())
+
+b()
+b()
+b()
+b()
+b()
+b()
+print(b())

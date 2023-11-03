@@ -1,5 +1,16 @@
-from lib import Worker
+from lib import CheckTime
 
 
-w_1 = Worker('1111', 'Ivanov Ivan Ivanovich', 100, 18)
-w_2 = Worker('1234', 'q w r', 1000, 0)
+def cube(x):
+    return x ** 3
+
+
+def values(start, end):
+    mas = []
+    for i in range(start, end+1):
+        mas.append(cube(i))
+    return mas
+
+
+time = CheckTime(values)
+print(time(-1000000, 1000000))

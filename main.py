@@ -1,16 +1,7 @@
-from lib import Counter
+from lib import Info
 
 
-a = Counter()  # a и b - функторы
-b = Counter()
-a()
-a()
-print(a())
-
-b()
-b()
-b()
-b()
-b()
-b()
-print(b())
+a = Info('test1')
+print(a)
+print(str(a))
+print(repr(a))

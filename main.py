@@ -1,7 +1,6 @@
-from lib import Info
+from lib import Team
 
 
-a = Info('test1')
-print(a)
-print(str(a))
-print(repr(a))
+t1 = Team('team1', 'p1', 'p2', 'p3')
+print(len(t1))
+print(t1)

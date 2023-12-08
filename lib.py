@@ -1,9 +1,13 @@
-class Info:
-    def __init__(self, name):
+class Team:
+    def __init__(self, name, *args):
         self.__name = name
+        self.__list = list(args)
+
+    def __len__(self):
+        return len(self.__list)
 
     def __str__(self):
-        return 'эта инфа тебе не нужна'
-
-    def __repr__(self):
-        return f'{self.__class__}: {self.__name}'
+        s = f'Name: {self.__name}\n'
+        for el in self.__list:
+            s += f'\t{el}\n'
+        return s

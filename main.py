@@ -1,6 +1,7 @@
-from lib import Team
+from lib import Complex
 
 
-t1 = Team('team1', 'p1', 'p2', 'p3')
-print(len(t1))
-print(t1)
+n1 = Complex(-2, 3)
+print(n1)
+abs(n1)
+print(n1)

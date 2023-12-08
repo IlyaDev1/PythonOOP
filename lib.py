@@ -1,13 +1,11 @@
-class Team:
-    def __init__(self, name, *args):
-        self.__name = name
-        self.__list = list(args)
+class Complex:
+    def __init__(self, x, y):
+        self.__x = x
+        self.__y = y
 
-    def __len__(self):
-        return len(self.__list)
+    def __abs__(self):
+        self.__x = abs(self.__x)
+        self.__y = abs(self.__y)
 
     def __str__(self):
-        s = f'Name: {self.__name}\n'
-        for el in self.__list:
-            s += f'\t{el}\n'
-        return s
+        return f'{self.__x} + {self.__y}i'

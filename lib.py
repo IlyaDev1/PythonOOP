@@ -23,3 +23,9 @@ class Complex:
             else:
                 x = self.__x + int(other)
                 return Complex(x, self.__y)
+
+    def __radd__(self, other):
+        return self + other
+
+    def __iadd__(self, other):
+        return self + other

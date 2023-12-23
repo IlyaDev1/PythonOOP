@@ -1,31 +1,40 @@
-class Complex:
-    def __init__(self, x, y):
-        self.__x = x
-        self.__y = y
+from math import sqrt
 
-    def __abs__(self):
-        self.__x = abs(self.__x)
-        self.__y = abs(self.__y)
+
+class Complex:
+    def __init__(self, r, i):
+        self.__r = r
+        self.__i = i
 
     def __str__(self):
-        return f'{self.__x} + {self.__y}i'
+        if self.__i > 0:
+            return f'{self.__r} + {self.__i}i'
+        else:
+            return f'{self.__r} - {abs(self.__i)}i'
+
+    def __abs__(self):
+        return Complex(abs(self.__r), abs(self.__i))
 
     def __add__(self, other):
         if isinstance(other, Complex):
-            x = self.__x + other.__x
-            y = self.__y + other.__y
-            return Complex(x, y)
-
-        elif isinstance(other, str):
-            if other[-1] == 'i':
-                y = self.__y + int(other.split('i')[0])
-                return Complex(self.__x, y)
-            else:
-                x = self.__x + int(other)
-                return Complex(x, self.__y)
+            return Complex(self.__r + other.__r, self.__i + other.__i)
+        elif isinstance(other, int) or isinstance(other, float):
+            return Complex(self.__r + other, self.__i)
+        else:
+            raise TypeError('not correct other data')
 
     def __radd__(self, other):
         return self + other
 
     def __iadd__(self, other):
         return self + other
+
+    def __gipo(self, r, i):
+        return sqrt(r*r + i*i)
+
+    def __eq__(self, other):
+        fst = self.__gipo(self.__r, self.__i)
+        scd = self.__gipo(other.__r, self.__i)
+        return fst == scd
+
+    #eq ==, ne !=, lt <, le <=, gt >, ge >=

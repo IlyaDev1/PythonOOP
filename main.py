@@ -1,16 +1,10 @@
-from lib import CheckTime
+from lib import Complex
 
 
-def cube(x):
-    return x ** 3
+c1 = Complex(-2, -5)
+c2 = Complex(5, 10)
 
-
-def values(start, end):
-    mas = []
-    for i in range(start, end+1):
-        mas.append(cube(i))
-    return mas
-
-
-time = CheckTime(values)
-print(time(-1000000, 1000000))
+c3 = c1 + c2
+c4 = 5 + c2 + 6
+c2 += c1
+print(c1, c2, c3, c4, sep='\n')

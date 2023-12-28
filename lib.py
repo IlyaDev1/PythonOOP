@@ -1,17 +1,16 @@
-from math import sqrt
+class Group:
+    def __init__(self, name, persons):
+        self.__name = name
+        self.__persons = persons
 
+    def __str__(self):
+        s = ''
+        for el in self.__persons:
+            s += f'{el} '
+        return s
 
-class Point:
-    def __init__(self, x, y):
-        self.__x = x
-        self.__y = y
+    def __getitem__(self, item):
+        return self.__persons[item]
 
-    def __radiusVector(self):
-        return sqrt(self.__x ** 2 + self.__y ** 2)
-
-    def __len__(self):
-        return int(self.__radiusVector())
-
-    def __bool__(self):
-        if len(self) != 0: return True
-        return False
+    def __setitem__(self, key, value):
+        self.__persons[key] = value

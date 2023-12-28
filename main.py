@@ -1,5 +1,7 @@
-from lib import Point
+from lib import Group
 
 
-p1 = Point(3, 4)
-print(len(p1))
+g1 = Group('IKPI_15', ['ilya', 'ilnar', 'almir'])
+print(g1[2])
+g1[2] = 'vanya'
+print(g1)

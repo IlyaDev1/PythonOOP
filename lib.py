@@ -1,10 +1,17 @@
+from math import sqrt
+
+
 class Point:
     def __init__(self, x, y):
         self.__x = x
         self.__y = y
 
-    def __eq__(self, other):
-        return self.__x == other.__x and self.__y == other.__y
+    def __radiusVector(self):
+        return sqrt(self.__x ** 2 + self.__y ** 2)
 
-    def __hash__(self):
-        return hash((self.__x, self.__y))
+    def __len__(self):
+        return int(self.__radiusVector())
+
+    def __bool__(self):
+        if len(self) != 0: return True
+        return False

@@ -1,8 +1,7 @@
-from lib import LinkedList
+from lib import Product
 
 
-a = LinkedList()
-a.append(5)
-a.append(6)
-a.append(7)
-a.print()
+a = 'ABC'
+b = Product(a, repeat=2)
+print(b)
+

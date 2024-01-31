@@ -1,7 +1,8 @@
-from lib import Group
+from lib import LinkedList
 
 
-g1 = Group('IKPI_15', ['ilya', 'ilnar', 'almir'])
-print(g1[2])
-g1[2] = 'vanya'
-print(g1)
+a = LinkedList()
+a.append(5)
+a.append(6)
+a.append(7)
+a.print()

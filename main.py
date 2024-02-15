@@ -1,10 +1,20 @@
-from lib import Complex
+from lib import Frac
 
 
-c1 = Complex(-2, -5)
-c2 = Complex(5, 10)
+a = Frac(2, 5)
+b = Frac(20)
+c = Frac('20/40')
+d = Frac(12.5)
+print(a)
+print(b)
+print(c)
+print(d)
 
-print(c1 + c2)
-print(c1 - c2)
-print(c1 * c2)
-print(c1 / c2)
+e = Frac(-4, 5)
+print(abs(e))
+
+print(a + b)
+
+a = Frac(10, 20)
+b = Frac(10, 20)
+print(a == b, a == e)

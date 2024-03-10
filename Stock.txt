@@ -1,0 +1,2 @@
+AAPL: 170[USD]
+TATN: 750[RUB]

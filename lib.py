@@ -1,31 +1,68 @@
-class BankAccount:
-    def __init__(self, login, pwd, cash=0):
-        self._login = login
-        self._pwd = pwd
-        self._cash = cash
+from os import system
+
+
+class Account:
+    def __init__(self, name):
+        self.__name = name
+        self.__cash = 0
 
     def __str__(self):
-        return f'Сумма на счете {self._login}: {self._cash}'
+        s = f'Счет: {self.__name} | Средства: {self.__cash}[RUB]'
+        return s
 
-    def __add__(self, other):
-        return BankAccount(self._login, self._pwd, self._cash + other)
+    def __setattr__(self, key, value):
+        if key == '_Account___cash':
+            if value < 0:
+                raise ValueError('not enough money in the account')
+        object.__setattr__(self, key, value)
 
-    def __radd__(self, other):
-        return self + other
+    def __testStream(self, value):
+        if value < 0:
+            raise ValueError('only positive value')
 
-    def __iadd__(self, other):
-        return self + other
+    def add(self, value):
+        self.__testStream(value)
+        self.__cash += value
 
-    def __sub__(self, other):
-        return BankAccount(self._login, self._pwd, self._cash - other)
-
-    def __rsub__(self, other):
-        return self - other
-
-    def __isub__(self, other):
-        return self - other
+    def take(self, value):
+        self.__testStream(value)
+        self.__cash -= value
 
 
-class SavingAccount(BankAccount):
-    def chargePercent(self):
-        self._cash = (self._cash * 1.07 - self._cash) / 12 + self._cash
+class Brokerage(Account):
+    def __init__(self, name):
+        super().__init__(name)
+        self.__cur = {}
+        self.__assets = {}
+
+    @staticmethod
+    def openCurrency():
+        system('notepad Currency.txt')
+
+    @staticmethod
+    def openStock():
+        system('notepad Stock.txt')
+
+    def __str__(self):
+        s = super().__str__()
+        s += f' | {self.__cur} | {self.__assets}'
+        return s
+
+    def __findCurrency(self, name):
+        with open('Currency.txt') as file:
+            fileString = file.readline()
+            while fileString != '':
+                CurrencyList = fileString.split(': ')
+                if CurrencyList[0] == name:
+                    return int(CurrencyList[1][:-1])
+        raise Exception('not correct asset name')
+
+    def buyCurrency(self, name, amount):
+        cost = self.__findCurrency(name) * amount
+        super().take(cost)
+        try:
+            self.__cur[name] += amount
+        except KeyError:
+            self.__cur[name] = 0
+        finally:
+            self.__cur[name] += amount

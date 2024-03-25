@@ -1,7 +1,7 @@
-from lib import Product
+from lib import InputTest
 
 
-a = 'ABC'
-b = Product(a, repeat=2)
-print(b)
+with InputTest(0) as nn:
+    nn += int(input())
 
+print(nn)

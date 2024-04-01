@@ -1,7 +1,8 @@
-from lib import TxtFile
+from lib import TGame
 
 
-a = TxtFile('test.txt')
-print(a.content)
-a.addString('hello world')
-print(a.content)
+g1 = TGame()
+print(g1)
+g1.setHod(1, 1, 1)
+print(g1)
+g1.setHod(5, 5, 1)

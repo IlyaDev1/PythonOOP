@@ -1,33 +1,23 @@
-class File:
-    def __init__(self, name):
-        self._name = name
-        self._file = open(self._name, 'a+')
+class TGame:
+    __slots__ = ('__mapa')
 
-    def __del__(self):
-        self._file.close()
+    def __init__(self):
+        self.__mapa = [[None]*3 for i in range(3)]
+
+    def __str__(self):
+        s = ''
+        for el in self.__mapa:
+            s += str(el) + '\n'
+        return s
+
+    def setHod(self, posX, posY, value):
+        if posX > 2 or posX < 0 or posY > 2 or posY < 0:
+            raise MapBorderException('ты вышел за границы карты')
 
 
-class TxtFile(File):
-    def __init__(self, name):
-        if name[name.rfind('.')+1::] == 'txt':
-            if name.count('.') == 1:
-                super().__init__(name)
-            else:
-                raise ValueError('not correct file name')
-        self.content = self.getContent(self._file)
-        self.__ban = '0123456789'
+class MapBorderException(IndexError):
+    def __init__(self, *args):
+        self.__message = args
 
-    @classmethod
-    def getContent(cls, file):
-        file.seek(0)
-        s = file.readlines()
-        mas = [el[:-1] for el in s]
-        mas[-1] += s[-1][-1]
-        return mas
-
-    def addString(self, s):
-        for c in self.__ban:
-            if c in s:
-                raise ValueError('not correct symbol in string')
-        self._file.write('\n'+s)
-        self.content.append(s)
+    def __str__(self):
+        return f'ошибка: {self.__message}'

@@ -1,13 +1,17 @@
-class InputTest:
-    def __init__(self, value):
-        self.__value = value
+class Point2D:
+    __slots__ = ('_x', '_y')
 
-    def __enter__(self):
-        self.__temp = self.__value
-        return self.__temp
+    def __init__(self, x, y):
+        self._x = x
+        self._y = y
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        if exc_type is None:
-            self.__value = self.__temp
 
-        return False
+class Point3D(Point2D):
+    __slots__ = ('__z')
+
+    def __init__(self, x, y, z):
+        super().__init__(x, y)
+        self.__z = z
+
+    def __str__(self):
+        return f'{self._x}, {self._y}, {self.__z}'

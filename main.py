@@ -1,7 +1,7 @@
-from lib import InputTest
+from lib import Point3D
 
 
-with InputTest(0) as nn:
-    nn += int(input())
+a = Point3D(1, 2, 3)
+a.y = 5
 
-print(nn)
+print(a)
